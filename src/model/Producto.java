@@ -2,13 +2,14 @@ package model;
 
 public class Producto {
     /// Atributos
-    private int id;
+    private final int id;
     private String nombre;
     private double precio;
     private int stock;
 
     /// Constructores
-    public Producto(String nombre, double precio, int stock){
+    public Producto(int id, String nombre, double precio, int stock){
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
@@ -22,11 +23,11 @@ public class Producto {
     public int getStock(){return this.stock;}
 
     // Setters
-    public void setNombre(){this.nombre = nombre;}
+    public void setNombre(String nombre){this.nombre = nombre;}
     public void setPrecio(double precio){this.precio = stock;}
     public void setStock(int stock){this.stock = stock;}
 
-    @override
+    @Override
     public String toString(){
         return "PRODUCTO: " + id + "\nNOMBRE: " + nombre + "\nPRECIO: " + precio + "\nSTOCK: " + stock;
     }
