@@ -1,0 +1,19 @@
+### IntelliJ IDEA ###
+.idea/
+out/
+gen/
+*.iml
+*.iws
+*.ipr
+
+### Compilados y Build ###
+bin/
+build/
+target/
+*.class
+*.jar
+*.war
+
+### Sistema ###
+.DS_Store
+Thumbs.db
