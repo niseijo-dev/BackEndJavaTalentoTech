@@ -25,7 +25,7 @@ public class MenuProducto {
         int opcion = -1;
         do{
             try{
-                System.out.println("--- MENÚ PRODUCTOS ---");
+                System.out.println("\n\n=== MENÚ PRODUCTOS ===");
                 System.out.println("[1]: Agregar Producto");
                 System.out.println("[2]: Listar Productos");
                 System.out.println("[3]: Actualizar Producto");
@@ -33,7 +33,7 @@ public class MenuProducto {
                 System.out.println("[5]: Crear Pedido");
                 System.out.println("[6]: Listar Pedidos");
                 System.out.println("[0]: Salir");
-                System.out.println("Ingrese la opción deseada:");
+                System.out.print("Ingrese la opción deseada: ");
                 opcion = Integer.parseInt(scanner.nextLine());
                 procesarOpcion(opcion);
             } catch (NumberFormatException e) {System.out.println("Error: Por favor, ingrese un número válido.");}
@@ -54,16 +54,17 @@ public class MenuProducto {
             case 5: procesarCrearPed();
                 break;
             case 6: listarPeds();
+            break;
             case 0: System.out.println("-- Gracias por usar el gestor de Pedidos y Productos --");
         }
     }
 
     public void procesarAgregarProd(){
-        System.out.println("Ingrese nombre: ");
+        System.out.print("Ingrese nombre: ");
         String nombre = scanner.nextLine();
-        System.out.println("Ingrese precio: ");
+        System.out.print("Ingrese precio: ");
         double precio = Double.parseDouble(scanner.nextLine());
-        System.out.println("Ingrese stock: ");
+        System.out.print("Ingrese stock: ");
         int stock = Integer.parseInt(scanner.nextLine());
 
         prodServ.agregarProducto(nombre, precio, stock);
@@ -71,28 +72,33 @@ public class MenuProducto {
     }
 
     public void listarProds(){
+        System.out.println("--- LISTADO DE PRODUCTOS ---");
         for (Producto prod : prodServ.leerProductos()){
             System.out.println(prod);
+            System.out.println("---------------------------");
         }
     }
 
     public void procesarActualizarProd(){
-        System.out.println("Ingrese ID del producto a modificar: ");
+        System.out.print("Ingrese ID del producto a modificar: ");
         int id = Integer.parseInt(scanner.nextLine());
-        System.out.println("Ingrese el nuevo nombre del producto: ");
+        System.out.print("Ingrese el nuevo nombre del producto: ");
         String nombre = scanner.nextLine();
-        System.out.println("Ingrese el nuevo precio del producto: ");
+        System.out.print("Ingrese el nuevo precio del producto: ");
         double precio = Double.parseDouble(scanner.nextLine());
-        System.out.println("Ingrese el nuevo stock del producto: ");
+        System.out.print("Ingrese el nuevo stock del producto: ");
         int stock = Integer.parseInt(scanner.nextLine());
 
         prodServ.modificarProducto(id, nombre, precio, stock);
+        System.out.println("Producto modificado existosamente");
     }
 
     public void procesarEliminarProd(){
-        System.out.println("Ingrese el ID del producto a eliminar: ");
+        System.out.print("Ingrese el ID del producto a eliminar: ");
         int id = Integer.parseInt(scanner.nextLine());
         prodServ.eliminarProducto(id);
+
+        System.out.println("Producto eliminado existosamente");
     }
 
     public void procesarCrearPed(){
@@ -100,13 +106,13 @@ public class MenuProducto {
         int opcion = 1;
 
         while(opcion != 0){
-            System.out.println("Ingrese el ID del producto a agregar al pedido: ");
+            System.out.print("Ingrese el ID del producto a agregar al pedido: ");
             Producto prod = prodServ.buscarProducto(Integer.parseInt(scanner.nextLine()));
-            System.out.println("Ingrese la cantidad a pedir: ");
+            System.out.print("Ingrese la cantidad a pedir: ");
             LineaPedido lineaPed = new LineaPedido(prod, Integer.parseInt(scanner.nextLine()));
             lineasPed.add(lineaPed);
 
-            System.out.println("Ingrese 1 para agregar más productos, o 0 para finalizar: ");
+            System.out.print("Ingrese 1 para agregar más productos, o 0 para finalizar: ");
             opcion = Integer.parseInt(scanner.nextLine());
         }
 
